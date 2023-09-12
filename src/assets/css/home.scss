@@ -1,0 +1,21 @@
+.main__container {
+  height: 100vh;
+  background: linear-gradient(45deg, #acaef8, #d3e3fd, #c4acf5);
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* Other styles for .main__container if needed */
+  width: 100%;
+
+  .main__div {
+    width: 160vh; 
+    height: 85vh; 
+    background: rgba(255, 255, 255, 0.26);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+    border: 1px solid #d3e3fd;
+  }
+}
