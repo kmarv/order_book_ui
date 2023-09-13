@@ -9,13 +9,44 @@
   width: 100%;
 
   .main__div {
-    width: 160vh; 
-    height: 85vh; 
+    width: 160vh;
+    height: 85vh;
     background: rgba(255, 255, 255, 0.26);
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(0px);
     -webkit-backdrop-filter: blur(0px);
+    backdrop-filter: blur(0px);
     border: 1px solid #d3e3fd;
+    display: flex; /* or inline-flex */
+
+    .nav {
+      display: flex;
+
+      .nav__bar {
+        display: flex;
+        gap: 5rem;
+
+        .nav__menu {
+          gap: 2rem;
+          display: flex;
+          flex-flow: row nowrap;
+          flex-grow: 4;
+          flex-shrink: 3;
+          flex-basis: auto;
+          align-self: center;
+          justify-content: space-between;
+        }
+      }
+      .nav__btn {
+        display: flex;
+        flex-flow: row nowrap;
+        flex-grow: 4;
+        flex-shrink: 3;
+        flex-basis: auto;
+        align-self: center;
+        justify-content: flex-end;
+        gap:2rem
+      }
+    }
   }
 }
