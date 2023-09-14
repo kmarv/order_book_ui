@@ -1,6 +1,46 @@
+// css root variables
+:root {
+  --main-color-1: #acaef8;
+  --main-color-2: #d3e3fd;
+  --main-color-3: #c4acf5;
+  --primary-color: #5ec888;
+  --text-subtitle: #727285;
+  --font-size-subtitle: smaller;
+  --primary-margin: 10px;
+  --primary-padding: 10px;
+  --active-color: rgb(82, 128, 244);
+  --bg-color-div: rgb(248, 247, 253);
+  --bg-color-input: rgb(241, 242, 247);
+  --bg-color-tabs: rgb(231, 234, 251);
+  --border-radius: 16px;
+  --btn-border-radius: 20px;
+  --gradient-btn-color: linear-gradient(
+    45deg,
+    rgb(114, 133, 247),
+    rgb(55, 73, 246),
+    rgb(114, 133, 247)
+  );
+  --gradient-bg-color-div: linear-gradient(
+    rgb(250, 250, 254),
+    var(--bg-color-div),
+    rgb(249, 248, 254),
+    rgb(247, 246, 254),
+    rgb(245, 245, 254),
+    rgb(243, 243, 252)
+  );
+  --secondary-bg-color: #ebecf8;
+  --active-secondary-color: #50c381;
+}
+
+// css styles
 .main__container {
   height: 100vh;
-  background: linear-gradient(45deg, #acaef8, #d3e3fd, #c4acf5);
+  background: linear-gradient(
+    45deg,
+    var(--main-color-1),
+    var(--main-color-2),
+    var(--main-color-3)
+  );
   overflow: hidden;
   display: flex;
   justify-content: center;
@@ -10,9 +50,9 @@
 
   .main__div {
     width: 160vh;
-    height: 85vh;
+    height: 88vh;
     background: rgba(255, 255, 255, 0.26);
-    border-radius: 16px;
+    border-radius: var(--border-radius);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     -webkit-backdrop-filter: blur(0px);
     backdrop-filter: blur(0px);
@@ -35,6 +75,21 @@
           flex-basis: auto;
           align-self: center;
           justify-content: space-between;
+          .menu-item {
+            cursor: pointer;
+            padding: 10px;
+            transition: color 0.2s; /* Add a smooth color transition */
+            &:hover{
+              text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add text shadow on hover */
+            }
+          }
+          
+          .menu-item.active {
+            color: var(--active-color); /* Change the color when actively clicked */
+            &:hover{
+              text-shadow: 2px 2px 4px rgba(82, 128, 244, 0.5);
+            }
+          }
         }
       }
       .nav__btn {
@@ -45,103 +100,245 @@
         flex-basis: auto;
         align-self: center;
         justify-content: flex-end;
-        gap:2rem
+        gap: 2rem;
+        .wallet {
+          .network__item{
+            &:hover{
+              box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+            }
+          }
+          .wallet__btn {
+            background: linear-gradient(
+              rgb(194, 198, 248),
+              rgb(186, 190, 248),
+              rgb(195, 199, 248)
+            );
+            border-radius: 8px;
+            border: 2px solid rgb(186, 190, 248);
+          }
+        }
+        .connect__btn {
+          border-radius: 8px;
+          background: var(--gradient-btn-color);
+          border: 2px solid rgb(114, 133, 247);
+          margin-right: 30px;
+          width: 90%;
+          color: #fff;
+        }
       }
     }
 
-    .token{
+    .token {
       display: flex;
-      border: 2px solid #EBECF8;
-      background: #EBECF8;
-      border-radius: 15px;
+      border: 2px solid var(--secondary-bg-color);
+      background: var(--secondary-bg-color);
+      border-radius: var(--border-radius);
       width: 97%;
       margin-left: 15px;
-      .text-mute{
-        color: #babad0;
-        font-size: smaller;
+      .text-mute {
+        color: var(--text-subtitle);
+        font-size: var(--font-size-subtitle);
       }
-      .price{
-        color: #5ec888;
+      .price {
+        color: var(--primary-color);
         font-weight: bold;
         justify-content: center;
         align-self: center;
         font-size: medium;
       }
-      .index{
+      .index {
         font-size: 15px;
         color: #161414;
-        .price__change{
-          color: #5ec888;
+        .price__change {
+          color: var(--primary-color);
           font-weight: 350;
         }
       }
-      
-      .token__info{
+
+      .token__info {
         width: 330px;
         display: flex;
         justify-content: flex-end;
-        gap:2rem;
+        gap: 2rem;
         align-self: center;
       }
     }
-    .trade_order{
-      border: 2px solid #EBECF8;
-      background: #EBECF8;
-      height: 67vh;
-      border-radius: 15px;
+    .trade_order {
+      border: 2px solid var(--bg-color-div);
+      background: var(--gradient-bg-color-div);
+      height: 70vh;
+      border-radius: var(--border-radius);
       width: 100%;
-      .tabs{
+      .tabs {
         display: flex;
         width: 100%;
         gap: 0px;
         margin-top: 10px;
         .tab-button {
-          background: #c7cdf5;
+          background: var(--bg-color-tabs);
           width: 100%;
-          border: 1px solid #e7eafd;
+          border: 1px solid var(--bg-color-tabs);
           padding: 10px 0px;
           cursor: pointer;
           margin: 5px;
           justify-content: center;
           align-self: center;
-          border-radius: 20px;
-          
+          border-radius: var(--btn-border-radius);
+        }
+        .tab-button.tt {
+          margin-left: -20px;
+          border-top-left-radius: 0px;
+          border-bottom-left-radius: 0px;
+        }
+        .tab-button.active {
+          background: var(--active-secondary-color);
+        }
       }
-      .tab-button.tt{
-        margin-left: -20px;
-        border-top-left-radius:0px ;
-        border-bottom-left-radius:0px;
-      }
-      .tab-button.active {
-        background: #50c381 !important;
-      }
-      }
-      .tabs__order{
+      .tabs__order {
         display: flex;
         align-self: center;
         justify-content: center;
         gap: 4rem;
-        background: #ffffff;
-        border: 2px solid #f0f1f6;
-        border-radius: 15px;
-        padding: 10px;
-        margin: 10px;
+        background: var(--bg-color-input);
+        border: 2px solid var(--bg-color-input);
+        border-radius: var(--border-radius);
+        padding: var(--primary-padding);
+        margin: var(--primary-margin);
         cursor: pointer;
-        .order{
+        .order {
           color: #4b4b52;
-          &:hover{
-            color: #4D61FE;
+          &:hover {
+            color: var(--active-color);
           }
         }
-        .order.clicked{
-          color:#4D61FE;
+        .order.clicked {
+          color: var(--active-color);
         }
       }
-      .price__input{
+      .price__input {
         display: flex;
-        padding: 10px;
-        margin: 10px;
+        padding: var(--primary-padding);
+        margin: var(--primary-margin);
+        background: var(--bg-color-input);
+        border: 2px solid var(--bg-color-input);
+        border-radius: var(--border-radius);
+        height: 5vh;
       }
+      .price__slider {
+        padding: var(--primary-padding);
+        margin: var(--primary-margin);
+        #components-slider-demo-mark h4 {
+          margin: 0 0 16px;
+        }
+        #components-slider-demo-mark .ant-slider-with-marks {
+          margin-bottom: 44px;
+        }
+      }
+      .summary {
+        padding: var(--primary-padding);
+        margin: var(--primary-margin);
+        border: 2px solid var(--bg-color-input);
+        border-radius: var(--border-radius);
+        background: var(--bg-color-input);
+        height: 22vh;
+        .summ__title {
+          font-size: large;
+          color: #323234;
+        }
+        .summ__details {
+          display: flex;
+          justify-content: space-between; /* This will evenly space the elements */
+          align-items: center;
+        }
+        .summ__details.ddd {
+          margin-top: -10px;
+        }
+        .summ__details span:last-child {
+          margin-left: 0;
+        }
+        .summ__details span:first-child {
+          color: var(--text-subtitle);
+        }
+      }
+      .order__button {
+        width: 90%;
+        margin: var(--primary-margin);
+        padding: var(--primary-padding);
+        border-radius: var(--border-radius);
+        margin-top: 2px;
+        color: #fff;
+        background: var(--gradient-btn-color);
+        border: none;
+      }
+    }
+    .order__graph {
+      border: 2px solid var(--bg-color-div);
+      background: var(--gradient-bg-color-div);
+      height: 44vh;
+      border-radius: var(--border-radius);
+      width: 105%;
+      .graph__tabs {
+        display: flex;
+        width: 90%;
+        height: 50px;
+        padding: var(--primary-padding);
+        margin: var(--primary-margin);
+        background: var(--bg-color-tabs);
+        border-radius: var(--btn-border-radius);
+        height: 4vh;
+        overflow: hidden; /* Hide any potential overflow */
+        margin-top: 10px;
+        .tab-button-graph {
+          flex: 1;
+          height: 3.8vh;
+          background: var(--bg-color-tabs);
+          border: 1px solid var(--bg-color-tabs);
+          cursor: pointer;
+          border-radius: var(--btn-border-radius);
+          text-align: center;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          align-self: center;
+        }
+        .tab-button-graph.active {
+          background: #fff;
+          color: var(--active-color);
+        }
+      }
+      .graph__order__tabs{
+        display: flex;
+        align-self: center;
+        justify-content: center;
+        gap: 4rem;
+        background: var(--bg-color-input);
+        border: 2px solid var(--bg-color-input);
+        border-radius: var(--border-radius);
+        padding: var(--primary-padding);
+        margin: var(--primary-margin);
+        cursor: pointer;
+        font-size: var(--font-size-subtitle);
+        color: var(--text-subtitle);
+        height: 3vh;
+        .graph__title{
+          align-self: center;
+        }
+      }
+    }
+    .candle__stick {
+      border: 2px solid var(--bg-color-div);
+      background: var(--gradient-bg-color-div);
+      height: 44vh;
+      border-radius: var(--border-radius);
+      width: 98%;
+    }
+    .order_history {
+      border: 2px solid var(--bg-color-div);
+      background: var(--gradient-bg-color-div);
+      border-radius: var(--border-radius);
+      margin-top: 10px;
+      height: 25vh;
+      width: 98%;
     }
   }
 }
