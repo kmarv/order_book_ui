@@ -48,5 +48,100 @@
         gap:2rem
       }
     }
+
+    .token{
+      display: flex;
+      border: 2px solid #EBECF8;
+      background: #EBECF8;
+      border-radius: 15px;
+      width: 97%;
+      margin-left: 15px;
+      .text-mute{
+        color: #babad0;
+        font-size: smaller;
+      }
+      .price{
+        color: #5ec888;
+        font-weight: bold;
+        justify-content: center;
+        align-self: center;
+        font-size: medium;
+      }
+      .index{
+        font-size: 15px;
+        color: #161414;
+        .price__change{
+          color: #5ec888;
+          font-weight: 350;
+        }
+      }
+      
+      .token__info{
+        width: 330px;
+        display: flex;
+        justify-content: flex-end;
+        gap:2rem;
+        align-self: center;
+      }
+    }
+    .trade_order{
+      border: 2px solid #EBECF8;
+      background: #EBECF8;
+      height: 67vh;
+      border-radius: 15px;
+      width: 100%;
+      .tabs{
+        display: flex;
+        width: 100%;
+        gap: 0px;
+        margin-top: 10px;
+        .tab-button {
+          background: #c7cdf5;
+          width: 100%;
+          border: 1px solid #e7eafd;
+          padding: 10px 0px;
+          cursor: pointer;
+          margin: 5px;
+          justify-content: center;
+          align-self: center;
+          border-radius: 20px;
+          
+      }
+      .tab-button.tt{
+        margin-left: -20px;
+        border-top-left-radius:0px ;
+        border-bottom-left-radius:0px;
+      }
+      .tab-button.active {
+        background: #50c381 !important;
+      }
+      }
+      .tabs__order{
+        display: flex;
+        align-self: center;
+        justify-content: center;
+        gap: 4rem;
+        background: #ffffff;
+        border: 2px solid #f0f1f6;
+        border-radius: 15px;
+        padding: 10px;
+        margin: 10px;
+        cursor: pointer;
+        .order{
+          color: #4b4b52;
+          &:hover{
+            color: #4D61FE;
+          }
+        }
+        .order.clicked{
+          color:#4D61FE;
+        }
+      }
+      .price__input{
+        display: flex;
+        padding: 10px;
+        margin: 10px;
+      }
+    }
   }
 }
