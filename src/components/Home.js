@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { DownCircleOutlined } from "@ant-design/icons";
 import { Divider, Select, Input, Slider, Menu, Dropdown } from "antd";
+// import CandlestickChart from "./Charts/CandlestickChart";
 
 import "../assets/css/home.scss";
 
@@ -362,7 +363,9 @@ function Home() {
                   </div>
                 </div>
                 <div className="col-md-9">
-                  <div className="candle__stick"></div>
+                  <div className="candle__stick">
+                    {/* <CandlestickChart/> */}
+                  </div>
                 </div>
               </div>
               <div className="row">
