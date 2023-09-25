@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Divider, Input, Tooltip } from "antd";
+import { Button, Divider, Input, Tooltip } from "antd";
+import { ToastContainer, toast } from "react-toastify";
 
 const formatNumber = (value) => new Intl.NumberFormat().format(value);
 const NumericInput = (props) => {
@@ -51,6 +52,22 @@ function BotSettings() {
   const [spreadAsk, setSpreadAsk] = useState(0);
   const [spreadBid, setSpreadBid] = useState(0);
   const [time, setTime] = useState(0);
+
+  const handleSubmit = () => {
+    const paramBody = [
+      {limit, orderNum, spreadAsk, spreadBid, time}
+    ]
+    if (paramBody.length > 0) {
+      toast.success("Bot Parameters Updated", {
+        position: toast.POSITION.TOP_RIGHT
+      })
+    } else {
+      toast.error("Body Empty", {
+        position: toast.POSITION.TOP_RIGHT
+      })
+    }
+    
+  }
 
   return (
     <div className="bot__settings">
@@ -130,6 +147,8 @@ function BotSettings() {
           </div>
         </div>
       </div>
+      <Button onClick={handleSubmit}  size="large" type="primary">Submit</Button>
+      <ToastContainer/>
     </div>
   );
 }
