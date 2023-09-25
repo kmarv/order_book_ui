@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { DownCircleOutlined } from "@ant-design/icons";
-import { Divider, Select, Input, Slider, Menu, Dropdown } from "antd";
+import { Divider, Select, Input, Slider, Menu, Dropdown, Space } from "antd";
 // import CandlestickChart from "./Charts/CandlestickChart";
+import BotSettings from "./bot/BotSettings";
 
 import "../assets/css/home.scss";
 
@@ -31,20 +32,27 @@ function importAll(r) {
 const menuOptions = [
   { key: "Ethereum", label: "Ethereum", icon: "eth.png" },
   { key: "BSC", label: "Binance Smart", icon: "bsc.png" },
-  {key: "SOL", label: "Solano", icon:"sol.png"},
-  {key: 'TRON', label: "TRON", icon:"tron.png"}
+  { key: "SOL", label: "Solano", icon: "sol.png" },
+  { key: "TRON", label: "TRON", icon: "tron.png" },
 ];
 const marketOptions = [
   {
-    key: "$PIE/USDT", icon:"logo-01.png",
-  },{
-    key: "ETH/USDT", icon:"eth.png",
-  },{
-    key: 'BTC/USDT', icon:"btc.png",
-  },{
-    key:"BNB/USDT", icon:"bsc.png"
-  }
-]
+    key: "$PIE/USDT",
+    icon: "logo-01.png",
+  },
+  {
+    key: "ETH/USDT",
+    icon: "eth.png",
+  },
+  {
+    key: "BTC/USDT",
+    icon: "btc.png",
+  },
+  {
+    key: "BNB/USDT",
+    icon: "bsc.png",
+  },
+];
 
 function Home() {
   const [activeTab, setActiveTab] = useState(1);
@@ -53,14 +61,15 @@ function Home() {
   const [activeMenuItem, setActiveMenuItem] = useState(null);
   const [selectedOption, setSelectedOption] = useState(menuOptions[0]);
   const [marketOption, setMarketOption] = useState("$PIE/USDT");
-  const [tokenImg, setTokenImg] = useState(marketOptions[0].icon)
+  const [tokenImg, setTokenImg] = useState(marketOptions[0].icon);
+  const [open, setOpen] = useState(false);
 
   // importing all images in the application
   const images = importAll(
     require.context("../assets/img", false, /\.(png|jpe?g|svg)$/)
   );
 
-  // handler for networks 
+  // handler for networks
   const handleOptionClick = (optionKey) => {
     const option = menuOptions.find((opt) => opt.key === optionKey);
     if (option) {
@@ -68,14 +77,19 @@ function Home() {
     }
   };
 
-// handler for token images
-  const handleTokenImageChange = (optionKey) =>{
+  // handler for token images
+  const handleTokenImageChange = (optionKey) => {
     const option = marketOptions.find((opt) => opt.key === optionKey);
     if (option) {
       setTokenImg(option.icon);
     }
-  }
+  };
 
+  const showModal = () => {
+    setOpen(true);
+  };
+
+  // menu
   const menu = (
     <Menu onClick={(e) => handleOptionClick(e.key)}>
       {menuOptions.map((option) => (
@@ -90,6 +104,38 @@ function Home() {
       ))}
     </Menu>
   );
+
+  const items = [
+    {
+      key: 0,
+      label: (
+        <div onClick={showModal}>
+          Bot Settings
+        </div>
+      ),
+    },
+    {
+      key: 1,
+      label: (
+        <div>
+          Account
+        </div>
+      ),
+      disabled:true
+    },
+    {
+      type: "divider",
+    },
+    {
+      key: 2,
+      label: (
+        <div>
+          Log Out
+        </div>
+      ),
+      disabled: true,
+    },
+  ];
 
   const handleTabClick1 = (tabNumber) => {
     setFocus(tabNumber);
@@ -109,12 +155,12 @@ function Home() {
     setActiveMenuItem(index);
   };
 
-  // console.log(tokenImg);
-
   return (
+    <>
     <div className="main__container">
       <div className="main__div row">
         <div className="col-md-12">
+          {/* navigation bar */}
           <div className="row">
             <div className="col-md-12">
               <div className="nav">
@@ -162,7 +208,17 @@ function Home() {
                       }`}
                       onClick={() => handleMenuItemClick(4)}
                     >
-                      More
+                      <Dropdown
+                        menu={{
+                          items,
+                        }}
+                        placement="bottomLeft"
+                        arrow
+                      >
+                        <a onClick={(e) => e.preventDefault()} href="###">
+                          <Space>More</Space>
+                        </a>
+                      </Dropdown>
                     </div>
                   </div>
                 </div>
@@ -186,11 +242,12 @@ function Home() {
               </div>
             </div>
           </div>
+          {/* top info bar */}
           <div className="row">
             <div className="col-md-12 token">
               <div className="token__info">
                 <div>
-                  <img src={ images[tokenImg]} height={35} alt="" />{" "}
+                  <img src={images[tokenImg]} height={35} alt="" />{" "}
                   {marketOption}
                 </div>
                 <div>
@@ -236,6 +293,7 @@ function Home() {
               </div>
             </div>
           </div>
+          {/* main body */}
           <div className="row" style={{ marginTop: "12px" }}>
             <div className="col-md-3">
               <div className="trade_order">
@@ -325,7 +383,10 @@ function Home() {
                   <div className="summ__details">
                     <span>Transaction fee</span> <span>$1</span>
                   </div>
-                  <Divider type="horizontal" style={{margin:"10px", padding:"10px"}} />
+                  <Divider
+                    type="horizontal"
+                    style={{ margin: "10px", padding: "10px" }}
+                  />
                   <div className="summ__details ddd">
                     <span>Total Cost</span> <span>$20000</span>
                   </div>
@@ -378,6 +439,8 @@ function Home() {
         </div>
       </div>
     </div>
+    <BotSettings open={open} setOpen={setOpen} />
+    </>
   );
 }
 export default Home;
