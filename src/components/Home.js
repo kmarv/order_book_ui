@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { DownCircleOutlined } from "@ant-design/icons";
 import { Divider, Select, Input, Slider, Menu, Dropdown, Space } from "antd";
+
 // import CandlestickChart from "./Charts/CandlestickChart";
 import BotSettings from "./bot/BotSettings";
 
