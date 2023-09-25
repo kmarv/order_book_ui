@@ -62,23 +62,25 @@ function BotSettings() {
       </p>
       <div className="bot__input">
         <div className="input__group">
-          <p>Orders </p>
-          <label>Max Number of Orders </label> :{" "}
-          <NumericInput
-            style={{
-              width: 120,
-            }}
-            value={orderNum}
-            onChange={setOrderNum}
-          />
+          <p>Orders Parameter</p>
+          <div>
+            <label className="text-muted">Max Number of Orders </label> :{" "}
+            <NumericInput
+              style={{
+                width: 120,
+              }}
+              value={orderNum}
+              onChange={setOrderNum}
+            />
+          </div>
         </div>
       </div>
       <div className="bot__input">
         <div className="input__group">
-          <p>Spread</p>
+          <p>Spread Parameter</p>
           <div>
             {" "}
-            Bid:{" "}
+           <label className="text-muted"> Bid Spread:</label>
             <NumericInput
               style={{
                 width: 120,
@@ -88,7 +90,7 @@ function BotSettings() {
             />
           </div>
           <div>
-            Ask :{" "}
+           <label className="text-muted"> Ask Spread : </label>
             <NumericInput
               style={{
                 width: 120,
@@ -102,26 +104,30 @@ function BotSettings() {
 
       <div className="bot__input">
         <div className="input__group">
-          <p>Amount Limit</p>
-          <label>Amount in USD:</label>
-          <NumericInput
-            style={{
-              width: 120,
-            }}
-            value={limit}
-            onChange={setLimit}
-          />
+          <p>Amount Limit Parameter</p>
+          <div>
+            <label className="text-muted">Amount in USD:</label>
+            <NumericInput
+              style={{
+                width: 120,
+              }}
+              value={limit}
+              onChange={setLimit}
+            />
+          </div>
         </div>
       </div>
       <div className="bot__input">
         <div className="input__group">
-          <p>Trade Time Execution</p>
-          <label>Time to excute a transaction</label>
-          <NumericInput
-            style={{ width: 120 }}
-            value={time}
-            onChange={setTime}
-          />
+          <p>Trade Time Execution Parameter</p>
+          <div>
+            <label className="text-muted">Time to excute a transaction</label>
+            <NumericInput
+              style={{ width: 120 }}
+              value={time}
+              onChange={setTime}
+            />
+          </div>
         </div>
       </div>
     </div>

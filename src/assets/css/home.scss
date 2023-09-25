@@ -344,15 +344,31 @@
           }
           .bot__input{
             margin-bottom: 20px;
-            .input-group {
+            .input__group {
               display: flex;
               flex-direction: column;
+              align-items: flex-start;
+              margin: 25px;
+              margin-left: 50px;
+              .pass__input{
+                // display: flex;
+                width: 60%;
+                margin: 10px;
+              }
+              .pass__input label{
+                font-size: large;
+                float: left;
+                margin: var(--primary-margin);
+              }
             }
-            .input-group label {
+            .input__group label {
               margin-top: 10px; /* Adds space between the label and the input */
-              align-self: flex-start;
-              float: left;
             }
+            .input__group p{
+              border-bottom: 1px dashed #3c3b3b; /* Add a dashed bottom border to <p> tags */
+              // padding-bottom: 5px; /* Add 
+            }
+
           }
         }
       }
