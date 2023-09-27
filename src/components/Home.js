@@ -3,8 +3,7 @@ import { DownCircleOutlined } from "@ant-design/icons";
 import { Divider, Select, Input, Slider, Menu, Dropdown } from "antd";
 import {useNavigate} from "react-router-dom"
 
-// import CandlestickChart from "./Charts/CandlestickChart";
-// import BotSettings from "./bot/BotSettings";
+import CandleStick from "./Charts/CandleStick";
 
 import "../assets/css/home.scss";
 
@@ -418,7 +417,7 @@ function Home() {
                 </div>
                 <div className="col-md-9">
                   <div className="candle__stick">
-                    {/* <CandlestickChart/> */}
+                    <CandleStick/>
                   </div>
                 </div>
               </div>
