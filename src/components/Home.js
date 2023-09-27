@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { DownCircleOutlined } from "@ant-design/icons";
-import { Divider, Select, Input, Slider, Menu, Dropdown, Space } from "antd";
+import { Divider, Select, Input, Slider, Menu, Dropdown } from "antd";
+import {useNavigate} from "react-router-dom"
 
 // import CandlestickChart from "./Charts/CandlestickChart";
-import BotSettings from "./bot/BotSettings";
+// import BotSettings from "./bot/BotSettings";
 
 import "../assets/css/home.scss";
 
@@ -63,7 +64,8 @@ function Home() {
   const [selectedOption, setSelectedOption] = useState(menuOptions[0]);
   const [marketOption, setMarketOption] = useState("$PIE/USDT");
   const [tokenImg, setTokenImg] = useState(marketOptions[0].icon);
-  const [open, setOpen] = useState(false);
+  // const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
 
   // importing all images in the application
   const images = importAll(
@@ -86,9 +88,9 @@ function Home() {
     }
   };
 
-  const showModal = () => {
-    setOpen(true);
-  };
+  // const showModal = () => {
+  //   setOpen(true);
+  // };
 
   // menu
   const menu = (
@@ -106,37 +108,37 @@ function Home() {
     </Menu>
   );
 
-  const items = [
-    {
-      key: 0,
-      label: (
-        <div onClick={showModal}>
-          Bot Settings
-        </div>
-      ),
-    },
-    {
-      key: 1,
-      label: (
-        <div>
-          Account
-        </div>
-      ),
-      disabled:true
-    },
-    {
-      type: "divider",
-    },
-    {
-      key: 2,
-      label: (
-        <div>
-          Log Out
-        </div>
-      ),
-      disabled: true,
-    },
-  ];
+  // const items = [
+  //   {
+  //     key: 0,
+  //     label: (
+  //       <div onClick={navigate('/settings')}>
+  //         Settings
+  //       </div>
+  //     ),
+  //   },
+  //   {
+  //     key: 1,
+  //     label: (
+  //       <div>
+  //         Account
+  //       </div>
+  //     ),
+  //     disabled:true
+  //   },
+  //   {
+  //     type: "divider",
+  //   },
+  //   {
+  //     key: 2,
+  //     label: (
+  //       <div>
+  //         Log Out
+  //       </div>
+  //     ),
+  //     disabled: true,
+  //   },
+  // ];
 
   const handleTabClick1 = (tabNumber) => {
     setFocus(tabNumber);
@@ -207,19 +209,9 @@ function Home() {
                       className={`menu-item ${
                         activeMenuItem === 4 ? "active" : ""
                       }`}
-                      onClick={() => handleMenuItemClick(4)}
+                      onClick={() =>{ handleMenuItemClick(4); navigate('/settings'); }}
                     >
-                      <Dropdown
-                        menu={{
-                          items,
-                        }}
-                        placement="bottomLeft"
-                        arrow
-                      >
-                        <a onClick={(e) => e.preventDefault()} href="###">
-                          <Space>More</Space>
-                        </a>
-                      </Dropdown>
+                     Settings
                     </div>
                   </div>
                 </div>
@@ -440,7 +432,7 @@ function Home() {
         </div>
       </div>
     </div>
-    <BotSettings open={open} setOpen={setOpen} />
+    {/* <BotSettings open={open} setOpen={setOpen} /> */}
     </>
   );
 }

@@ -30,6 +30,7 @@
   );
   --secondary-bg-color: #ebecf8;
   --active-secondary-color: #50c381;
+  --settings-active-color: rgb(116, 84, 200);
 }
 
 // css styles
@@ -79,14 +80,16 @@
             cursor: pointer;
             padding: 10px;
             transition: color 0.2s; /* Add a smooth color transition */
-            &:hover{
+            &:hover {
               text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add text shadow on hover */
             }
           }
-          
+
           .menu-item.active {
-            color: var(--active-color); /* Change the color when actively clicked */
-            &:hover{
+            color: var(
+              --active-color
+            ); /* Change the color when actively clicked */
+            &:hover {
               text-shadow: 2px 2px 4px rgba(82, 128, 244, 0.5);
             }
           }
@@ -111,9 +114,10 @@
         justify-content: flex-end;
         gap: 2rem;
         .wallet {
-          .network__item{
-            &:hover{
-              box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+          .network__item {
+            &:hover {
+              box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3),
+                0 15px 12px rgba(0, 0, 0, 0.22);
             }
           }
           .wallet__btn {
@@ -280,6 +284,95 @@
         border: none;
       }
     }
+    .settings__page {
+      border: 0px solid var(--bg-color-div);
+      // background: var(--gradient-bg-color-div);
+      height: 78vh;
+      border-radius: var(--border-radius);
+      width: 100%;
+      .settings__title {
+        margin: 16px;
+        margin-left: 10%;
+        float: left;
+      }
+      .settings__menu {
+        // display: flex;
+        // flex-direction: column;
+        // align-items: flex-start;
+        margin-left: 80px;
+        margin-top: 80px;
+        border-right: 1px solid #605f62;
+        .menu__item {
+          cursor: pointer;
+          color: inherit;
+          border-left: none;
+
+          transition: color 0.2s, border-left 0.2s;
+          width: 100%;
+          padding: 5px;
+          .badge {
+            margin: 2px;
+          }
+        }
+        .menu__item.active {
+          color: var(--settings-active-color);
+          border-left: 4px solid var(--settings-active-color);
+          box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
+          // background: var(--gradient-bg-color-div);
+        }
+      }
+      .main__setings {
+        border: 1px solid var(--bg-color-div);
+        background: var(--secondary-bg-color);
+        height: 66vh;
+        border-radius: var(--border-radius);
+        width: 98%;
+        .bot__settings {
+          .bot_set_title {
+            float: left;
+            margin-left: 10%;
+            margin: var(--primary-margin);
+          }
+          /* to prevent the arrow overflow the popup container, or the height is not enough when content is empty */
+          .numeric-input .ant-tooltip-inner {
+            min-width: 32px;
+            min-height: 37px;
+          }
+
+          .numeric-input .numeric-input-title {
+            font-size: 14px;
+          }
+          .bot__input{
+            margin-bottom: 20px;
+            .input__group {
+              display: flex;
+              flex-direction: column;
+              align-items: flex-start;
+              margin: 25px;
+              margin-left: 50px;
+              .pass__input{
+                // display: flex;
+                width: 60%;
+                margin: 10px;
+              }
+              .pass__input label{
+                font-size: large;
+                float: left;
+                margin: var(--primary-margin);
+              }
+            }
+            .input__group label {
+              margin-top: 10px; /* Adds space between the label and the input */
+            }
+            .input__group p{
+              border-bottom: 1px dashed #3c3b3b; /* Add a dashed bottom border to <p> tags */
+              // padding-bottom: 5px; /* Add 
+            }
+
+          }
+        }
+      }
+    }
     .order__graph {
       border: 2px solid var(--bg-color-div);
       background: var(--gradient-bg-color-div);
@@ -315,7 +408,7 @@
           color: var(--active-color);
         }
       }
-      .graph__order__tabs{
+      .graph__order__tabs {
         display: flex;
         align-self: center;
         justify-content: center;
@@ -329,7 +422,7 @@
         font-size: var(--font-size-subtitle);
         color: var(--text-subtitle);
         height: 3vh;
-        .graph__title{
+        .graph__title {
           align-self: center;
         }
       }
