@@ -11,6 +11,7 @@
   --active-color: rgb(82, 128, 244);
   --bg-color-div: rgb(248, 247, 253);
   --bg-color-input: rgb(241, 242, 247);
+  --bg-color-input-secondary: rgba(214, 242, 247, .2);
   --bg-color-tabs: rgb(231, 234, 251);
   --border-radius: 16px;
   --btn-border-radius: 20px;
@@ -441,6 +442,32 @@
       margin-top: 10px;
       height: 25vh;
       width: 98%;
+      .tabs{
+        display: flex;
+        margin:10px;
+        width: 800px;
+        .tab-button{
+          margin:3px;
+          border: 2px solid var(--bg-color-input);
+          width: 150px;
+          height: min-content;
+          border-radius: 10px;
+          cursor: pointer;
+          background-color: var(--bg-color-input);
+          color: #4b4b52;
+          &:hover{
+            background-color: var(--bg-color-input-secondary);
+            color:var(--active-color) ;
+            border: 2px  solid var(--bg-color-input-secondary);
+            box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+          }
+        }
+        .tab-button.active{
+          background-color: var(--bg-color-input-secondary);
+            color:var(--active-color) ;
+            border: 2px  solid var(--bg-color-input-secondary);
+        }
+      }
     }
   }
 }

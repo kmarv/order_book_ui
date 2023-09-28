@@ -58,6 +58,7 @@ const marketOptions = [
 function Home() {
   const [activeTab, setActiveTab] = useState(1);
   const [activeOrderTab, setActiveOrderTab] = useState(1);
+  const [activeTabHistory, setActiveTabHistory] = useState(1);
   const [focus, setFocus] = useState(0);
   const [activeMenuItem, setActiveMenuItem] = useState(null);
   const [selectedOption, setSelectedOption] = useState(menuOptions[0]);
@@ -106,38 +107,6 @@ function Home() {
       ))}
     </Menu>
   );
-
-  // const items = [
-  //   {
-  //     key: 0,
-  //     label: (
-  //       <div onClick={navigate('/settings')}>
-  //         Settings
-  //       </div>
-  //     ),
-  //   },
-  //   {
-  //     key: 1,
-  //     label: (
-  //       <div>
-  //         Account
-  //       </div>
-  //     ),
-  //     disabled:true
-  //   },
-  //   {
-  //     type: "divider",
-  //   },
-  //   {
-  //     key: 2,
-  //     label: (
-  //       <div>
-  //         Log Out
-  //       </div>
-  //     ),
-  //     disabled: true,
-  //   },
-  // ];
 
   const handleTabClick1 = (tabNumber) => {
     setFocus(tabNumber);
@@ -423,7 +392,14 @@ function Home() {
               </div>
               <div className="row">
                 <div className="col-md-12">
-                  <div className="order_history"></div>
+                  <div className="order_history">
+                    <div className="tabs">
+                      <div className={`tab-button ${activeTabHistory === 1 && "active"}`} onClick={() =>setActiveTabHistory(1)}>Balances</div>
+                      <div className={`tab-button ${activeTabHistory === 2 && "active"}`} onClick={() =>setActiveTabHistory(2)}>Open Orders</div>
+                      <div className={`tab-button ${activeTabHistory === 3 && "active"}`} onClick={() =>setActiveTabHistory(3)}>Order History</div>
+                      <div className={`tab-button ${activeTabHistory === 4 && "active"}`} onClick={() =>setActiveTabHistory(4)}>Funds</div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -431,7 +407,6 @@ function Home() {
         </div>
       </div>
     </div>
-    {/* <BotSettings open={open} setOpen={setOpen} /> */}
     </>
   );
 }
