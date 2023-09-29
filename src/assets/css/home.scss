@@ -11,6 +11,7 @@
   --active-color: rgb(82, 128, 244);
   --bg-color-div: rgb(248, 247, 253);
   --bg-color-input: rgb(241, 242, 247);
+  --bg-color-input-secondary: rgba(214, 242, 247, 0.2);
   --bg-color-tabs: rgb(231, 234, 251);
   --border-radius: 16px;
   --btn-border-radius: 20px;
@@ -31,6 +32,8 @@
   --secondary-bg-color: #ebecf8;
   --active-secondary-color: #50c381;
   --settings-active-color: rgb(116, 84, 200);
+  --buy-order-color:rgb(215,222,221);
+  --sell-order-color:rgb(247,239,244);
 }
 
 // css styles
@@ -197,14 +200,14 @@
           justify-content: center;
           align-self: center;
           border-radius: var(--btn-border-radius);
-        }
-        .tab-button.tt {
-          margin-left: -20px;
-          border-top-left-radius: 0px;
-          border-bottom-left-radius: 0px;
-        }
-        .tab-button.active {
-          background: var(--active-secondary-color);
+          &.tt {
+            margin-left: -20px;
+            border-top-left-radius: 0px;
+            border-bottom-left-radius: 0px;
+          }
+          &.active {
+            background: var(--active-secondary-color);
+          }
         }
       }
       .tabs__order {
@@ -223,9 +226,9 @@
           &:hover {
             color: var(--active-color);
           }
-        }
-        .order.clicked {
-          color: var(--active-color);
+          &.clicked {
+            color: var(--active-color);
+          }
         }
       }
       .price__input {
@@ -262,9 +265,9 @@
           display: flex;
           justify-content: space-between; /* This will evenly space the elements */
           align-items: center;
-        }
-        .summ__details.ddd {
-          margin-top: -10px;
+          &.ddd {
+            margin-top: -10px;
+          }
         }
         .summ__details span:last-child {
           margin-left: 0;
@@ -313,12 +316,12 @@
           .badge {
             margin: 2px;
           }
-        }
-        .menu__item.active {
-          color: var(--settings-active-color);
-          border-left: 4px solid var(--settings-active-color);
-          box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
-          // background: var(--gradient-bg-color-div);
+          &.active {
+            color: var(--settings-active-color);
+            border-left: 4px solid var(--settings-active-color);
+            box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
+            // background: var(--gradient-bg-color-div);
+          }
         }
       }
       .main__setings {
@@ -342,7 +345,7 @@
           .numeric-input .numeric-input-title {
             font-size: 14px;
           }
-          .bot__input{
+          .bot__input {
             margin-bottom: 20px;
             .input__group {
               display: flex;
@@ -350,25 +353,25 @@
               align-items: flex-start;
               margin: 25px;
               margin-left: 50px;
-              .pass__input{
+              .pass__input {
                 // display: flex;
                 width: 60%;
                 margin: 10px;
-              }
-              .pass__input label{
-                font-size: large;
-                float: left;
-                margin: var(--primary-margin);
-              }
-            }
-            .input__group label {
-              margin-top: 10px; /* Adds space between the label and the input */
-            }
-            .input__group p{
-              border-bottom: 1px dashed #3c3b3b; /* Add a dashed bottom border to <p> tags */
-              // padding-bottom: 5px; /* Add 
-            }
+                label {
+                  font-size: large;
+                  float: left;
+                  margin: var(--primary-margin);
+                }
 
+              }
+              label {
+                margin-top: 10px; /* Adds space between the label and the input */
+              }
+              p {
+                border-bottom: 1px dashed #3c3b3b; /* Add a dashed bottom border to <p> tags */
+                // padding-bottom: 5px; /* Add
+              }
+            }
           }
         }
       }
@@ -402,10 +405,10 @@
           align-items: center;
           justify-content: center;
           align-self: center;
-        }
-        .tab-button-graph.active {
-          background: #fff;
-          color: var(--active-color);
+          &.active {
+            background: #fff;
+            color: var(--active-color);
+          }
         }
       }
       .graph__order__tabs {
@@ -441,6 +444,93 @@
       margin-top: 10px;
       height: 25vh;
       width: 98%;
+      .tabs {
+        display: flex;
+        margin: 10px;
+        width: 800px;
+        .tab-button {
+          margin: 3px;
+          border: 2px solid var(--bg-color-input);
+          width: 150px;
+          height: min-content;
+          border-radius: 10px;
+          cursor: pointer;
+          background-color: var(--bg-color-input);
+          color: #4b4b52;
+          &.active {
+            background-color: var(--bg-color-input-secondary);
+            color: var(--active-color);
+            border: 2px solid var(--bg-color-input-secondary);
+          }
+          &:hover {
+            background-color: var(--bg-color-input-secondary);
+            color: var(--active-color);
+            border: 2px solid var(--bg-color-input-secondary);
+            box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+          }
+        }
+      }
+      .history__table__header {
+        display: flex;
+        align-items: center; /* Vertically center-align headers */
+        gap: 1rem; /* Adjust the gap between header columns */
+        background: var(--bg-color-input);
+        border: 2px solid var(--bg-color-input);
+        border-radius: var(--border-radius);
+        padding: var(--primary-padding);
+        font-size: var(--font-size-subtitle);
+        color: var(--text-subtitle);
+        height: 3vh;
+
+        .table__header {
+          flex: 1; /* Allow each header to grow and fill available space equally */
+          text-align: center; /* Center-align text within each header cell */
+        }
+      }
+      .history__table__data {
+        display: flex;
+        flex-direction: column; /* Display rows vertically */
+        align-self: center;
+        gap: 1rem; /* Adjust the gap between rows */
+        // background: var(--bg-color-input);
+        // border: 2px solid var(--bg-color-input);
+        // border-radius: var(--border-radius);
+        padding: var(--primary-padding);
+        font-size: var(--font-size-subtitle);
+        color: var(--text-subtitle);
+        height: 3vh;
+
+        .table__row {
+          display: flex;
+          align-items: center; /* Vertically center align data within each row */
+          gap: 1rem;
+          border: 2px solid transparent; /* Set a default transparent border for all rows */
+          height: 3vh;
+          border-radius: var(--border-radius);
+          &.buy {
+            background: var(
+              --buy-order-color
+            ); /* Define the background color for Buy rows */
+            border-color: var(
+              --buy-order-color
+            ); /* Define the border color for Buy rows */
+          }
+
+          &.sell {
+            background-color: var(
+              --sell-order-color
+            ); /* Define the background color for Sell rows */
+            border-color: var(
+              --sell-order-color
+            ); /* Define the border color for Sell rows */
+          }
+          .table__data {
+            flex: 1; /* Allow each data element to grow and fill available space equally */
+            text-align: center; /* Center-align text within each data cell */
+            white-space: nowrap;
+          }
+        }
+      }
     }
   }
 }
