@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import { DownCircleOutlined } from "@ant-design/icons";
 import { Divider, Select, Input, Slider, Menu, Dropdown } from "antd";
-import {useNavigate} from "react-router-dom"
+import {useNavigate} from "react-router-dom";
+import {TiArrowUnsorted} from "react-icons/ti";
+import {MdOutlineKeyboardArrowDown} from "react-icons/md";
 
 import CandleStick from "./Charts/CandleStick";
 
 import "../assets/css/home.scss";
+import { data } from "./data/OrderHistory";
 
 const { Option } = Select;
 
@@ -398,6 +401,32 @@ function Home() {
                       <div className={`tab-button ${activeTabHistory === 2 && "active"}`} onClick={() =>setActiveTabHistory(2)}>Open Orders</div>
                       <div className={`tab-button ${activeTabHistory === 3 && "active"}`} onClick={() =>setActiveTabHistory(3)}>Order History</div>
                       <div className={`tab-button ${activeTabHistory === 4 && "active"}`} onClick={() =>setActiveTabHistory(4)}>Funds</div>
+                    </div>
+                    <div className="history__table__header">
+                      <div className="table__header">Time</div>
+                      <div className="table__header">Pair<TiArrowUnsorted/></div>
+                      <div className="table__header">Type<MdOutlineKeyboardArrowDown/></div>
+                      <div className="table__header">Side<MdOutlineKeyboardArrowDown/></div>
+                      <div className="table__header">Price<TiArrowUnsorted/></div>
+                      <div className="table__header">Amount<TiArrowUnsorted/></div>
+                      <div className="table__header">Filled<TiArrowUnsorted/></div>
+                      <div className="table__header">Unfilled<TiArrowUnsorted/></div>
+                      <div className="table__header">Action</div>
+                    </div>
+                    <div className="history__table__data">
+                      {data.map((item, index) =>{
+                        return (<div className={`table__row ${item.Side.toLowerCase()}`} key={index}>
+                        <div className="table__data">{item.time} </div>
+                        <div className="table__data">{item.pair}</div>
+                        <div className="table__data">{item.Type}</div>
+                        <div className="table__data">{item.Side}</div>
+                        <div className="table__data">{item.Price}</div>
+                        <div className="table__data">{item.Amount}</div>
+                        <div className="table__data">{item.filled}</div>
+                        <div className="table__data">{item.unfilled}</div>
+                        <div className="table__data">Cancel</div>
+                        </div>)
+                      })}
                     </div>
                   </div>
                 </div>
