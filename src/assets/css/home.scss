@@ -1,4 +1,4 @@
-// css root variables
+/* Define CSS root variables for colors and styles */
 :root {
   --main-color-1: #acaef8;
   --main-color-2: #d3e3fd;
@@ -32,13 +32,25 @@
   --secondary-bg-color: #ebecf8;
   --active-secondary-color: #50c381;
   --settings-active-color: rgb(116, 84, 200);
-  --buy-order-color:rgb(215,222,221);
-  --sell-order-color:rgb(247,239,244);
+  --buy-order-color: linear-gradient(
+    to right,
+    rgb(228, 237, 235),
+    rgb(238, 245, 247),
+    rgb(242, 242, 250)
+  );
+  --sell-order-color: linear-gradient(
+    to right,
+    rgb(244, 235, 243),
+    rgb(247, 241, 247),
+    rgb(245, 238, 248)
+  );
+  --bold-text-color: #262525;
 }
 
-// css styles
+/* Styles for the main container */
 .main__container {
   height: 100vh;
+  /* Background gradient using color variables */
   background: linear-gradient(
     45deg,
     var(--main-color-1),
@@ -52,6 +64,7 @@
   /* Other styles for .main__container if needed */
   width: 100%;
 
+  /* Styles for .main__div and its children */
   .main__div {
     width: 160vh;
     height: 88vh;
@@ -63,13 +76,16 @@
     border: 1px solid #d3e3fd;
     display: flex; /* or inline-flex */
 
+    /* Styles for navigation section */
     .nav {
       display: flex;
 
+      /* Styles for navigation bar */
       .nav__bar {
         display: flex;
         gap: 5rem;
 
+        /* Styles for navigation menu */
         .nav__menu {
           gap: 2rem;
           display: flex;
@@ -79,6 +95,8 @@
           flex-basis: auto;
           align-self: center;
           justify-content: space-between;
+
+          /* Styles for individual menu items */
           .menu-item {
             cursor: pointer;
             padding: 10px;
@@ -88,6 +106,7 @@
             }
           }
 
+          /* Styles for active menu item */
           .menu-item.active {
             color: var(
               --active-color
@@ -179,17 +198,20 @@
         align-self: center;
       }
     }
+    /* Styles for the .trade_order section */
     .trade_order {
       border: 2px solid var(--bg-color-div);
       background: var(--gradient-bg-color-div);
       height: 70vh;
       border-radius: var(--border-radius);
       width: 100%;
+      /* Styles for tabs */
       .tabs {
         display: flex;
         width: 100%;
         gap: 0px;
         margin-top: 10px;
+        /* Styles for tab buttons */
         .tab-button {
           background: var(--bg-color-tabs);
           width: 100%;
@@ -200,16 +222,20 @@
           justify-content: center;
           align-self: center;
           border-radius: var(--btn-border-radius);
+
+          /* Styles for specific tab buttons */
           &.tt {
             margin-left: -20px;
             border-top-left-radius: 0px;
             border-bottom-left-radius: 0px;
           }
+          /* Styles for active tab */
           &.active {
             background: var(--active-secondary-color);
           }
         }
       }
+      /* Styles for tabs__order section */
       .tabs__order {
         display: flex;
         align-self: center;
@@ -239,6 +265,9 @@
         border: 2px solid var(--bg-color-input);
         border-radius: var(--border-radius);
         height: 5vh;
+        .input__text {
+          color: var(--bold-text-color);
+        }
       }
       .price__slider {
         padding: var(--primary-padding);
@@ -287,17 +316,21 @@
         border: none;
       }
     }
+
+    /* Styles for the .settings__page section */
     .settings__page {
       border: 0px solid var(--bg-color-div);
       // background: var(--gradient-bg-color-div);
       height: 78vh;
       border-radius: var(--border-radius);
       width: 100%;
+      /* Styles for .settings__title */
       .settings__title {
         margin: 16px;
         margin-left: 10%;
         float: left;
       }
+      /* Styles for .settings__menu */
       .settings__menu {
         // display: flex;
         // flex-direction: column;
@@ -305,6 +338,8 @@
         margin-left: 80px;
         margin-top: 80px;
         border-right: 1px solid #605f62;
+
+        /* Styles for menu items */
         .menu__item {
           cursor: pointer;
           color: inherit;
@@ -316,6 +351,7 @@
           .badge {
             margin: 2px;
           }
+          /* Styles for active menu item */
           &.active {
             color: var(--settings-active-color);
             border-left: 4px solid var(--settings-active-color);
@@ -324,12 +360,14 @@
           }
         }
       }
+      /* Styles for .main__setings */
       .main__setings {
         border: 1px solid var(--bg-color-div);
         background: var(--secondary-bg-color);
         height: 66vh;
         border-radius: var(--border-radius);
         width: 98%;
+        /* Styles for .bot__settings and its children */
         .bot__settings {
           .bot_set_title {
             float: left;
@@ -362,7 +400,6 @@
                   float: left;
                   margin: var(--primary-margin);
                 }
-
               }
               label {
                 margin-top: 10px; /* Adds space between the label and the input */
@@ -376,12 +413,16 @@
         }
       }
     }
+
+    /* Styles for the .order__graph section */
     .order__graph {
       border: 2px solid var(--bg-color-div);
       background: var(--gradient-bg-color-div);
       height: 44vh;
       border-radius: var(--border-radius);
       width: 105%;
+
+      /* Styles for .graph__tabs */
       .graph__tabs {
         display: flex;
         width: 90%;
@@ -393,6 +434,8 @@
         height: 4vh;
         overflow: hidden; /* Hide any potential overflow */
         margin-top: 10px;
+
+        /* Styles for tab-button-graph */
         .tab-button-graph {
           flex: 1;
           height: 3.8vh;
@@ -405,6 +448,8 @@
           align-items: center;
           justify-content: center;
           align-self: center;
+
+          /* Styles for active tab-button-graph */
           &.active {
             background: #fff;
             color: var(--active-color);
@@ -511,18 +556,16 @@
             background: var(
               --buy-order-color
             ); /* Define the background color for Buy rows */
-            border-color: var(
-              --buy-order-color
-            ); /* Define the border color for Buy rows */
+            border-color: transparent; /* Define the border color for Buy rows */
+            color: var(--bold-text-color);
           }
 
           &.sell {
-            background-color: var(
+            background: var(
               --sell-order-color
             ); /* Define the background color for Sell rows */
-            border-color: var(
-              --sell-order-color
-            ); /* Define the border color for Sell rows */
+            border-color: transparent; /* Define the border color for Sell rows */
+            color: var(--bold-text-color);
           }
           .table__data {
             flex: 1; /* Allow each data element to grow and fill available space equally */
