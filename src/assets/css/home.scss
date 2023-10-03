@@ -45,6 +45,8 @@
     rgb(245, 238, 248)
   );
   --bold-text-color: #262525;
+  --indicator-price-increase: rgb(132, 202, 152);
+  --indicator-price-decrease: rgb(214, 109, 115);
 }
 
 /* Styles for the main container */
@@ -474,6 +476,47 @@
           align-self: center;
         }
       }
+      .graph__order__data {
+        display: flex;
+        flex-direction: column; /* Display rows vertically */
+        align-self: center;
+        gap: 0.3rem; /* Adjust the gap between rows */
+        font-size: var(--font-size-subtitle);
+        color: var(--text-subtitle);
+        height: 1vh;
+        .table__row {
+          display: flex;
+          align-items: center; /* Vertically center align data within each row */
+          gap: 1rem;
+          border: 2px solid transparent; /* Set a default transparent border for all rows */
+          height: 3vh;
+          border-radius: var(--border-radius);
+          &.buy {
+            background: var(
+              --buy-order-color
+            ); /* Define the background color for Buy rows */
+            border-color: transparent; /* Define the border color for Buy rows */
+            .table__data:nth-child(1){
+              color: var(--indicator-price-increase);
+            }
+          }
+
+          &.sell {
+            background: var(
+              --sell-order-color
+            ); /* Define the background color for Sell rows */
+            border-color: transparent; /* Define the border color for Sell rows */
+            .table__data:nth-child(1) {
+              color: var(--indicator-price-decrease);
+            }
+          }
+          .table__data {
+            flex: 1; /* Allow each data element to grow and fill available space equally */
+            text-align: center; /* Center-align text within each data cell */
+            white-space: nowrap;
+          }
+        }
+      }
     }
     .candle__stick {
       border: 2px solid var(--bg-color-div);
@@ -537,9 +580,6 @@
         flex-direction: column; /* Display rows vertically */
         align-self: center;
         gap: 1rem; /* Adjust the gap between rows */
-        // background: var(--bg-color-input);
-        // border: 2px solid var(--bg-color-input);
-        // border-radius: var(--border-radius);
         padding: var(--primary-padding);
         font-size: var(--font-size-subtitle);
         color: var(--text-subtitle);
@@ -558,6 +598,9 @@
             ); /* Define the background color for Buy rows */
             border-color: transparent; /* Define the border color for Buy rows */
             color: var(--bold-text-color);
+            .table__data:nth-child(4){
+              color: var(--indicator-price-increase);
+            }
           }
 
           &.sell {
@@ -566,11 +609,17 @@
             ); /* Define the background color for Sell rows */
             border-color: transparent; /* Define the border color for Sell rows */
             color: var(--bold-text-color);
+            .table__data:nth-child(4){
+              color: var(--indicator-price-decrease);
+            }
           }
           .table__data {
             flex: 1; /* Allow each data element to grow and fill available space equally */
             text-align: center; /* Center-align text within each data cell */
             white-space: nowrap;
+            &:nth-child(9){
+              color: dodgerblue;
+            }
           }
         }
       }
