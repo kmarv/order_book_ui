@@ -4,6 +4,7 @@ import { Divider, Select, Input, Slider, Menu, Dropdown } from "antd";
 import { useNavigate } from "react-router-dom";
 import { TiArrowUnsorted } from "react-icons/ti";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
+import {BsArrowDown, BsArrowUp} from "react-icons/bs";
 
 import CandleStick from "./Charts/CandleStick";
 import { tradeData } from "./data/tradeData";
@@ -419,7 +420,7 @@ function Home() {
                       <div className="graph__order__data">
                         {activeOrderTab === 1 ? [...sellRows,null , ...buyRows].map((item, index) => {
                           if (item === null) {
-                            return  <div className="table__row">Testing</div>
+                            return  <div className="table__row empty">$3700.01 {<BsArrowUp/> || <BsArrowDown/>} </div>
                           }
                           return(
                             <div className={`table__row ${item.side.toLowerCase()}`}

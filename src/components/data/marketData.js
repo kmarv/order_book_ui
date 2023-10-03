@@ -1,50 +1,50 @@
 export const marketData= [{
-    price:28000,
+    price:3700,
     amount:0.7,
     time:'12:52:10',
     side:'buy'
 },{
-    price:28000,
+    price:3700,
     amount:0.7,
     time:'12:52:10',
     side:'sell'
 },{
-    price:28000,
+    price:3700,
     amount:0.7,
     time:'12:52:10',
     side:'buy'
 },{
-    price:28000,
+    price:3700,
     amount:0.7,
     time:'12:52:10',
     side:"sell"
 },{
-    price:28000,
+    price:3700,
     amount:0.7,
     time:'12:52:10',
     side:'buy'
 },{
-    price:28000,
+    price:3700,
     amount:0.7,
     time:'12:52:10',
     side:'buy'
 },{
-    price:28000,
+    price:3700,
     amount:0.7,
     time:'12:52:10',
     side:'sell'
 },{
-    price:28000,
+    price:3700,
     amount:0.7,
     time:'12:52:10',
     side:'buy'
 },{
-    price:28000,
+    price:3700,
     amount:0.7,
     time:'12:52:10',
     side:'buy'
 },{
-    price:28000,
+    price:3700,
     amount:0.7,
     time:'12:52:10',
     side:'buy'
