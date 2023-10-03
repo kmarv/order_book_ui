@@ -6,6 +6,8 @@ import { TiArrowUnsorted } from "react-icons/ti";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 
 import CandleStick from "./Charts/CandleStick";
+import { tradeData } from "./data/tradeData";
+import { marketData } from "./data/marketData";
 
 import "../assets/css/home.scss";
 import { data } from "./data/OrderHistory";
@@ -61,7 +63,7 @@ const marketOptions = [
 function Home() {
   const [activeTab, setActiveTab] = useState(1);
   const [activeOrderTab, setActiveOrderTab] = useState(1);
-  const [activeTabHistory, setActiveTabHistory] = useState(1);
+  const [activeTabHistory, setActiveTabHistory] = useState(2);
   const [focus, setFocus] = useState(0);
   const [activeMenuItem, setActiveMenuItem] = useState(null);
   const [selectedOption, setSelectedOption] = useState(menuOptions[0]);
@@ -69,6 +71,17 @@ function Home() {
   const [tokenImg, setTokenImg] = useState(marketOptions[0].icon);
   // const [open, setOpen] = useState(false);
   const navigate = useNavigate();
+  const sellRows = [];
+  const buyRows = [];
+  
+  tradeData.forEach((item) => {
+    if (item.side === 'sell') {
+      sellRows.push(item);
+    } else {
+      buyRows.push(item);
+    }
+  });
+
 
   // importing all images in the application
   const images = importAll(
@@ -389,9 +402,45 @@ function Home() {
                         </div>
                       </div>
                       <div className="graph__order__tabs">
-                        <div className="graph__title">Total</div>
-                        <div className="graph__title">Amount</div>
-                        <div className="graph__title">Price</div>
+                        {activeOrderTab === 1 ? (
+                          <>
+                            <div className="graph__title">Price</div>
+                            <div className="graph__title">Amount</div>
+                            <div className="graph__title">Total</div>{" "}
+                          </>
+                        ) : (
+                          <>
+                            <div className="graph__title">Price</div>
+                            <div className="graph__title">Amount</div>
+                            <div className="graph__title">Time</div>{" "}
+                          </>
+                        )}
+                      </div>
+                      <div className="graph__order__data">
+                        {activeOrderTab === 1 ? [...sellRows,null , ...buyRows].map((item, index) => {
+                          if (item === null) {
+                            return  <div className="table__row">Testing</div>
+                          }
+                          return(
+                            <div className={`table__row ${item.side.toLowerCase()}`}
+                            key={index}><div className="table__data">{item.price}</div>
+                            <div className="table__data">{item.amount}</div>
+                            <div className="table__data">{item.size}</div>
+                          </div>
+                          )
+                        }) :
+                          marketData.map((item, index) => {
+                            return (
+                              <div
+                                className={`table__row ${item.side.toLowerCase()}`}
+                                key={index}
+                              >
+                                <div className="table__data">{item.price}</div>
+                                <div className="table__data">{item.amount}</div>
+                                <div className="table__data">{item.time}</div>
+                              </div>
+                            );
+                          })}
                       </div>
                     </div>
                   </div>
@@ -419,7 +468,7 @@ function Home() {
                           }`}
                           onClick={() => setActiveTabHistory(2)}
                         >
-                          Open Orders
+                          Open Orders(3)
                         </div>
                         <div
                           className={`tab-button ${
