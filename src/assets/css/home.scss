@@ -42,12 +42,23 @@
     to right,
     rgb(244, 235, 243),
     rgb(247, 241, 247),
-    rgb(245, 238, 248)
+    rgb(245, 238, 250)
   );
   --bold-text-color: #262525;
   --indicator-price-increase: rgb(132, 202, 152);
   --indicator-price-decrease: rgb(214, 109, 115);
 }
+
+@keyframes blink {
+  0% {
+      color: #000;
+  }
+  50% {
+      color:var(--active-secondary-color);
+  }
+  100% {
+      color:var(--primary-color);
+  }}
 
 /* Styles for the main container */
 .main__container {
@@ -500,6 +511,11 @@
               color: var(--indicator-price-increase);
             }
           }
+          &.empty{
+            font-size: 16px;
+            animation: blink 2s infinite;
+          }
+
           &.sell {
             background: var(
               --sell-order-color

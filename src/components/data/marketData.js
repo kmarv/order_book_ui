@@ -2,7 +2,7 @@ export const marketData= [{
     price:3700,
     amount:0.7,
     time:'12:52:10',
-    side:'buy'
+    side:'sell'
 },{
     price:3700,
     amount:0.7,
@@ -42,10 +42,15 @@ export const marketData= [{
     price:3700,
     amount:0.7,
     time:'12:52:10',
-    side:'buy'
+    side:'sell'
 },{
     price:3700,
     amount:0.7,
     time:'12:52:10',
     side:'buy'
+},{
+    price:3700,
+    amount:0.7,
+    time:'12:52:10',
+    side:'sell'
 }]

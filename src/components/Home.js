@@ -420,7 +420,7 @@ function Home() {
                       <div className="graph__order__data">
                         {activeOrderTab === 1 ? [...sellRows,null , ...buyRows].map((item, index) => {
                           if (item === null) {
-                            return  <div className="table__row empty">$3700.01 {<BsArrowUp/> || <BsArrowDown/>} </div>
+                            return  <div className="table__row empty">$3700.01 <BsArrowUp color="#5ec888"/>  </div>
                           }
                           return(
                             <div className={`table__row ${item.side.toLowerCase()}`}
